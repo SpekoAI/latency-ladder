@@ -31,8 +31,8 @@ export default async function Home() {
             LADDER
           </h1>
           <p className="mt-6 max-w-md text-lg leading-relaxed text-chalk-dim">
-            Our agent answers in about 200 milliseconds. Most humans cannot.
-            Can you?
+            How fast is your brain-to-mouth gap? Race a live voice agent.
+            Both of you get measured.
           </p>
           <p className="mt-3 max-w-md text-sm leading-relaxed text-chalk-dim">
             Eight rapid questions. Your brain-to-mouth gap is timed on your
