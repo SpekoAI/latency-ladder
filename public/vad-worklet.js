@@ -70,6 +70,14 @@ class VadProcessor extends AudioWorkletProcessor {
       tsMs - this.lastAboveThresholdMs >= this.hangoverMs
     ) {
       this.active = false;
+      // lastVoiceTsMs is the final above-threshold block, i.e. the speech end
+      // before the hangover window. Consumers timing speech end must use it
+      // rather than tsMs, which includes the hangover.
+      this.port.postMessage({
+        type: "offset",
+        tsMs,
+        lastVoiceTsMs: this.lastAboveThresholdMs,
+      });
     }
 
     return true;

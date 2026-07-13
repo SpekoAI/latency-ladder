@@ -2,12 +2,123 @@
 
 :root {
   color-scheme: dark;
-  font-family: Arial, Helvetica, sans-serif;
+  --track: oklch(0.2 0.006 260);
+  --track-deep: oklch(0.16 0.006 260);
+  --chalk: oklch(0.92 0.005 260);
+  --chalk-dim: oklch(0.68 0.008 260);
+  --signal: oklch(0.72 0.16 145);
+  --fastest: oklch(0.62 0.18 305);
+  --alert: oklch(0.6 0.19 25);
+  --rule: oklch(0.32 0.008 260);
+  --rule-soft: oklch(0.27 0.008 260);
+}
+
+@theme inline {
+  --color-track: var(--track);
+  --color-track-deep: var(--track-deep);
+  --color-chalk: var(--chalk);
+  --color-chalk-dim: var(--chalk-dim);
+  --color-signal: var(--signal);
+  --color-fastest: var(--fastest);
+  --color-alert: var(--alert);
+  --color-rule: var(--rule);
+  --color-rule-soft: var(--rule-soft);
+  --font-display: var(--font-sora);
+  --font-mono-ms: var(--font-plex-mono);
 }
 
 body {
   min-height: 100vh;
   margin: 0;
-  background: #0a0a0a;
-  color: #f5f5f5;
+  background: var(--track);
+  color: var(--chalk);
+  font-family: var(--font-sora), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.ms-readout {
+  font-family: var(--font-plex-mono), monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.tower-rule {
+  border-color: var(--rule-soft);
+}
+
+/* Gap bar: sector-time style. Width set inline; color via data attributes. */
+.gap-bar {
+  height: 0.625rem;
+  border-radius: 1px;
+  background: var(--signal);
+  transform-origin: left center;
+  transition: width 480ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gap-bar[data-state="dq"] {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--alert) 0,
+    var(--alert) 6px,
+    transparent 6px,
+    transparent 10px
+  );
+}
+
+.gap-bar[data-state="best"] {
+  background: var(--fastest);
+  animation: pb-flash 700ms cubic-bezier(0.19, 1, 0.22, 1) 1;
+}
+
+.gap-bar[data-state="pending"] {
+  background: var(--rule);
+}
+
+@keyframes pb-flash {
+  0% {
+    box-shadow: 0 0 0 0 oklch(0.62 0.18 305 / 0.55);
+  }
+  100% {
+    box-shadow: 0 0 0 14px oklch(0.62 0.18 305 / 0);
+  }
+}
+
+@keyframes row-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.row-in {
+  animation: row-in 420ms cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+
+@keyframes go-pulse {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+.go-light {
+  animation: go-pulse 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gap-bar,
+  .row-in,
+  .go-light {
+    animation: none;
+    transition: none;
+  }
 }

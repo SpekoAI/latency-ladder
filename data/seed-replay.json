@@ -1,0 +1,19 @@
+{
+  "label": "Simulated run for illustration",
+  "agentMs": 214,
+  "rows": [
+    { "atMs": 400, "question": "Seven plus eight?", "gapMs": 642, "state": "ok" },
+    { "atMs": 1500, "question": "Any day of the week.", "gapMs": 488, "state": "ok" },
+    { "atMs": 2600, "question": "Color of a stop sign?", "gapMs": 517, "state": "ok" },
+    { "atMs": 3700, "question": "Opposite of hot?", "gapMs": 396, "state": "best" },
+    { "atMs": 4800, "question": "Spider legs?", "gapMs": 1240, "state": "dq" },
+    { "atMs": 5900, "question": "First month?", "gapMs": 534, "state": "ok" },
+    { "atMs": 7000, "question": "Salt and what?", "gapMs": 451, "state": "ok" },
+    { "atMs": 8100, "question": "What planet is this?", "gapMs": 583, "state": "ok" }
+  ],
+  "summary": {
+    "medianMs": 534,
+    "agentLabel": "agent, measured live",
+    "humanLabel": "human, local clock"
+  }
+}
