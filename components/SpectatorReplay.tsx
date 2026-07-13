@@ -83,7 +83,7 @@ export function SpectatorReplay() {
           {replay.label}
         </span>
         <span className="ms-readout text-xs text-chalk-dim">
-          agent {replay.agentMs}ms <span className="text-rule">|</span> measured live
+          agent {replay.agentMs}ms <span className="text-rule">|</span> illustrative
         </span>
       </figcaption>
       <div className="bg-track-deep px-4 py-3">
