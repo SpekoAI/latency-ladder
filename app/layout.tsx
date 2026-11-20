@@ -52,7 +52,7 @@ export default function RootLayout({
                 The agent you just raced runs on{" "}
                 <a
                   className="font-semibold text-chalk underline decoration-signal decoration-2 underline-offset-4"
-                  href="https://speko.ai?utm_source=latency-ladder&utm_medium=viral&utm_campaign=viral-3x"
+                  href="https://speko.com?utm_source=latency-ladder&utm_medium=viral&utm_campaign=viral-3x"
                 >
                   Speko
                 </a>
